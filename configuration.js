@@ -12,8 +12,26 @@ exports.config = {
     // They may include glob patterns.
     specs: ['tests/CheckingAllElements_spec.js'],
 
-    // Options to be passed to Jasmine-node.
+    baseUrl: 'https://brands-dev.klickly.com/',
+
     jasmineNodeOpts: {
-        showColors: true, // Use colors in the command line report.
+        onComplete: null,
+        isVerbose: false,
+        showColors: true,
+        includeStackTrace: true,
+        defaultTimeoutInterval: 10000
+    },
+
+    // Define things that will happen before start testing.
+    onPrepare: function() {
+        // Add jasmine spec reporter
+        jasmine.getEnv().addReporter(new SpecReporter({
+            displayFailuresSummary: true,
+            displayFailedSpec: true,
+            displaySuiteNumber: true,
+            displaySpecDuration: true
+        }));
+
+        browser.driver.manage().window().maximize();
     }
 };
