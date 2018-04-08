@@ -3,7 +3,7 @@ class Slider{
         this.linkToPreviousSlide = element(by.xpath("//*[@id=\"react-root\"]//span[@class=\"prev prev-dark\"]"));
         this.linkToNextSlide = element(by.xpath("//*[@id=\"react-root\"]//span[@class=\"next next-dark\"]"));
         this.sliderContainer = element(by.xpath("//*[@id=\"react-root\"]//div[@class='slider__container']"));
-        this.h1 = element(by.xpath("//h1[@class='banner-content__title']"));
+        this.title = element(by.xpath("//h1[@class='banner-content__title']"));
 
         this.logosMashable = element(by.xpath("//div[@class='logos']//img[@src='/f917247d11754f6edba77088518d01ae.png']"));
         this.logosEnterpreneur = element(by.xpath("//div[@class='logos']//img[@src='/5e06d00ba5e25a4e0f094df267b7e01b.png']"));
