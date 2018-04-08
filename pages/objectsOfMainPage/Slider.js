@@ -1,5 +1,8 @@
-class Slider{
+const Actions = require('./Actions.js');
+
+class Slider extends Actions{
     constructor(){
+        super('banner-content__desc');
         this.linkToPreviousSlide = element(by.xpath("//*[@id=\"react-root\"]//span[@class=\"prev prev-dark\"]"));
         this.linkToNextSlide = element(by.xpath("//*[@id=\"react-root\"]//span[@class=\"next next-dark\"]"));
         this.sliderContainer = element(by.xpath("//*[@id=\"react-root\"]//div[@class='slider__container']"));
@@ -10,9 +13,9 @@ class Slider{
         this.logosForbes = element(by.xpath("//div[@class='logos']//img[@src='/92b6c050c5da9523587314caa0d58587.png']"));
         this.logosInc = element(by.xpath("//div[@class='logos']//img[@src='/b4a01659f12792c7eb31b556127ef655.png']"));
         this.logosWomen2_0 = element(by.xpath("//div[@class='logos']//img[@src='/c26bcc82f41486275ff28d282490b200.png']"));
-
-        this.signUpFree = element(by.xpath("//div[@class='banner-content__desc']//div[@class='actions']//button[@type='button']"));
-        this.callLink = element(by.xpath("//div[@class='banner-content__desc']//div[@class='actions']//a[@href='https://app.hubspot.com/meetings/taylor32']"));
+        // this.actions = new Actions('banner-content__desc');
+        // this.signUpFree = this.actions.signUpFree;
+        // this.callLink = this.actions.callLink;
     }
 }
 
