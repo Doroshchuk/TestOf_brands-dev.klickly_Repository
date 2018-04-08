@@ -6,8 +6,8 @@ class Header {
         this.name = element(by.xpath("//span[@class='header-logo-text']"));
     }
 
-     getHeaderText(){
-        return this.name.getText();
+     getTextFromElement(element) {
+        return element.getText();
      }
 }
 
