@@ -14,10 +14,6 @@ class Slider{
         this.signUpFree = element(by.xpath("//div[@class='banner-content__desc']//div[@class='actions']//button[@type='button']"));
         this.callLink = element(by.xpath("//div[@class='banner-content__desc']//div[@class='actions']//a[@href='https://app.hubspot.com/meetings/taylor32']"));
     }
-
-    getTextFromElement(element){
-        return element.getText();
-    }
 }
 
 module.exports = Slider;

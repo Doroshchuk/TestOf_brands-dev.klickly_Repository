@@ -5,10 +5,6 @@ class ContainerAboutHowWork{
         this.videoContainer = element(by.xpath("//div[@class='ytp-cued-thumbnail-overlay']//div"));
         this.setPauseVideoBtn = element(by.xpath("//div[@class='ytp-cued-thumbnail-overlay']//button[@class='ytp-large-play-button ytp-button']"));
     }
-
-    getTextFromElement(element){
-        return element.getText();
-    }
 }
 
 module.exports = ContainerAboutHowWork;

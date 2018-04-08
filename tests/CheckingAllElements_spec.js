@@ -1,4 +1,6 @@
 const MainPage = require('../pages/MainPage.js');
+const Helpers = require('../pages/Helpers');
+
 describe('Check all elements of Main page', function () {
     const mainPage = new MainPage();
 
@@ -17,7 +19,7 @@ describe('Check all elements of Main page', function () {
     });
 
     it('check text in header', function () {
-        expect(mainPage.header.getTextFromElement(mainPage.header.name)).toBe("Brands");
+        expect(Helpers.getTextFromElement(mainPage.header.name)).toBe("Brands");
     });
 
     it('check that image is appeared in header', function () {
@@ -70,7 +72,7 @@ describe('Check all elements of Main page', function () {
     });
 
     it('verify text of call link in slider is right', function () {
-        expect(mainPage.slider.getTextFromElement(mainPage.slider.callLink)).toBe("Or set up a call");
+        expect(Helpers.getTextFromElement(mainPage.slider.callLink)).toBe("Or set up a call");
     });
 
     //about work
@@ -80,7 +82,7 @@ describe('Check all elements of Main page', function () {
     });
 
     it('verify text of title in container "about work" is right', function () {
-        expect(mainPage.containerAboutWork.getTextFromElement(mainPage.containerAboutWork.title)).toBe("How does Klickly work?");
+        expect(Helpers.getTextFromElement(mainPage.containerAboutWork.title)).toBe("How does Klickly work?");
     });
 
     it('check that main text is appeared in container "about work"', function () {
@@ -88,7 +90,7 @@ describe('Check all elements of Main page', function () {
     });
 
     it('verify text of main text in container "about work" is right', function () {
-        expect(mainPage.containerAboutWork.getTextFromElement(mainPage.containerAboutWork.mainTextLbl)).toBe("Our patented, cutting-edge technology lets people buy directly within your ads, making it easier for customers to see and buy your products on some of the most well known websites in the world.");
+        expect(Helpers.getTextFromElement(mainPage.containerAboutWork.mainTextLbl)).toBe("Our patented, cutting-edge technology lets people buy directly within your ads, making it easier for customers to see and buy your products on some of the most well known websites in the world.");
     });
 
     // it('check that video is appeared in container "about work"', function () {
