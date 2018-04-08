@@ -13,9 +13,6 @@ class Slider extends Actions{
         this.logosForbes = element(by.xpath("//div[@class='logos']//img[@src='/92b6c050c5da9523587314caa0d58587.png']"));
         this.logosInc = element(by.xpath("//div[@class='logos']//img[@src='/b4a01659f12792c7eb31b556127ef655.png']"));
         this.logosWomen2_0 = element(by.xpath("//div[@class='logos']//img[@src='/c26bcc82f41486275ff28d282490b200.png']"));
-        // this.actions = new Actions('banner-content__desc');
-        // this.signUpFree = this.actions.signUpFree;
-        // this.callLink = this.actions.callLink;
     }
 }
 

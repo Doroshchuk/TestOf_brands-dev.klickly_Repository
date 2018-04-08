@@ -1,7 +1,7 @@
 const MainPage = require('../pages/MainPage.js');
 const Helpers = require('../pages/Helpers');
 
-describe('Check all elements of Main page', function () {
+describe('Check all elements on landing page using locators you wish', function () {
     const mainPage = new MainPage();
 
     beforeAll(function () {
@@ -26,8 +26,8 @@ describe('Check all elements of Main page', function () {
         expect(mainPage.header.image.isDisplayed()).toBeTruthy();
     });
 
-    it('check that loginBtn is appeared in header', function () {
-        expect(mainPage.header.loginBtn.isDisplayed()).toBeTruthy();
+    it('check that logInBtn is appeared in header', function () {
+        expect(mainPage.header.logInBtn.isDisplayed()).toBeTruthy();
     });
 
     it('check that signUpBtn is appeared in header', function () {
@@ -93,13 +93,9 @@ describe('Check all elements of Main page', function () {
         expect(Helpers.getTextFromElement(mainPage.containerAboutWork.mainTextLbl)).toBe("Our patented, cutting-edge technology lets people buy directly within your ads, making it easier for customers to see and buy your products on some of the most well known websites in the world.");
     });
 
-    // it('check that video is appeared in container "about work"', function () {
-    //     expect(mainPage.containerAboutWork.videoContainer.isPresent()).toBeTruthy();
-    // });
-    //
-    // it('check that button to set pause in video is appeared in container "about work"', function () {
-    //     expect(mainPage.containerAboutWork.setPauseVideoBtn.isPresent()).toBeTruthy();
-    // });
+    it('check that video is appeared in container "about work"', function () {
+        expect(mainPage.containerAboutWork.videoFrame.isDisplayed()).toBeTruthy();
+    });
 
     //Actually work
     it('check that title is appeared in container "actually work"', function () {
