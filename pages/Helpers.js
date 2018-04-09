@@ -32,7 +32,6 @@ class Helpers{
     }
 
     static closePopUpInUserPage(){
-        browser.wait(() => userPage.popUp.popUpBox.isPresent(), 10000, 'Pop up not found');
         userPage.popUp.doNotShowAgainCheckbox.click();
         userPage.popUp.exploreTheDashboardBtn.click();
     }
@@ -40,7 +39,7 @@ class Helpers{
     static logInOnlyWithEmailAndPassword(email, password){
         this.setValueIntoTextField(logInPage.emailAddressTF, email);
         this.setValueIntoTextField(logInPage.passwordTf, password);
-        shopifyPage.logInBtn.click();
+        logInPage.logInBtn.click();
     }
 
     static chooseFunctionInAccountMenu(functionName){

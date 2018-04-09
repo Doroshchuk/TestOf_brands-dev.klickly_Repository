@@ -6,7 +6,7 @@ class LogInPage{
         this.emailAddressTF = element(by.xpath("//form//input[@name='email']"));
         this.passwordTf = element(by.xpath("//form//input[@type='password']"));
         this.logInWithShopifyBtn = element(by.xpath("//button[text()='Log in with Shopify']"));
-        this.logInBtn = element(by.xpath("//button[text()='Login']"));
+        this.logInBtn = element(by.xpath("//form//button[text()='Login']"));
     }
 }
 
