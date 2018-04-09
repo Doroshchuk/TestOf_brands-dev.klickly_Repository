@@ -9,7 +9,7 @@ class LogInPage{
         this.logInBtn = element(by.xpath("//form//button[text()='Login']"));
 
         this.messageBox = element(by.xpath("//div[@class='block-errors']//div[@class='popup-block error']"));
-        this.messageItem = element(by.xpath("//div[@class='block-errors']//div[@class='popup-block__info']//ul[@class='popup-block__list']//li"));
+        this.messageItems = element.all(by.xpath("//div[@class='block-errors']//div[@class='popup-block__info']//ul[@class='popup-block__list']//li"));
         this.message = element(by.xpath("//div[@class='block-errors']//div[@class='popup-block error']//p[@class='popup-block__info']"));
     }
 }

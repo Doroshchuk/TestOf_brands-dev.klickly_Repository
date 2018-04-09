@@ -101,7 +101,7 @@ describe('Login at https://brands-dev.klickly.com with shopify, using email / pa
         // Helpers.closePopUpInUserPage();
         browser.wait(() => logInPage.messageBox.isPresent(), 6000, 'MessageBox not found');
         expect(logInPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
-            && expect(Helpers.getTextFromElement(logInPage.messageItem)).toEqual("Email address must be in the format someone@example.com");
+            && expect(Helpers.getTextFromElement(logInPage.messageItems.get(0))).toEqual("Email address must be in the format someone@example.com");
     });
 
     // сообщение об ошибке
@@ -111,5 +111,15 @@ describe('Login at https://brands-dev.klickly.com with shopify, using email / pa
         browser.wait(() => logInPage.messageBox.isPresent(), 6000, 'MessageBox not found');
         expect(logInPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
             && expect(Helpers.getTextFromElement(logInPage.message)).toEqual("The email or password you entered is incorrect.");
+    });
+
+    // сообщение об ошибке
+    it('log in with empty email and password, without shopify', function () {
+        Helpers.logInOnlyWithEmailAndPassword("", "");
+        // Helpers.closePopUpInUserPage();
+        browser.wait(() => logInPage.messageBox.isPresent(), 6000, 'MessageBox not found');
+        expect(logInPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
+        && expect(Helpers.getTextFromElement(logInPage.messageItems.get(0))).toEqual("Email can't be blank")
+        && expect(Helpers.getTextFromElement(logInPage.messageItems.get(1))).toEqual("Password can't be blank");
     });
 });
