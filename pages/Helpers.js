@@ -44,15 +44,11 @@ class Helpers{
     }
 
     static chooseFunctionInAccountMenu(functionName){
-        if(userPage.isAuthenticated === true) {
-            userPage.header.nameOfUser.click();
-            browser.wait(() => userPage.header.accountMenuFunctions.isPresent(), 10000, 'Menu not found');
-            userPage.header.accountMenuFunctions.filter(function (elem) {
-                return elem.getText().then(function (val) {
-                    return val === functionName
-                });
-            }).click();
-        }
+        userPage.header.nameOfUser.click();
+        // browser.wait(() => userPage.header.accountMenuFunctions.isPresent(), 10000, 'Menu not found');
+        userPage.header.accountMenuFunctions.filter(function (elem) {
+            return elem.getText() === functionName
+        }).click();
     }
 }
 
