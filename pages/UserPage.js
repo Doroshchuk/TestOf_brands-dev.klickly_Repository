@@ -1,7 +1,13 @@
+const HeaderOfUserPage = require('./objectsOfUserPage/HeaderOfUserPage.js');
+const PopUoBoxOfUserPage = require('./objectsOfUserPage/PopUpBoxOfUserPage.js');
+const MainContentOfUserPage = require('./objectsOfUserPage/MainContentOfUserPage.js');
+
 class UserPage{
     constructor(){
-        this.popUpBox = element(by.xpath("//div[@class='popup__box']"));
-        this.titleOfPopUpBox = element(by.xpath("//h2[@class='popup__title']"));
+        this.header = new HeaderOfUserPage();
+        this.popUp = new PopUoBoxOfUserPage();
+        this.mainContent = new MainContentOfUserPage();
+        this.isAuthenticated = false;
     }
 }
 

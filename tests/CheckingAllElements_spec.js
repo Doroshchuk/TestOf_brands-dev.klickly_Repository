@@ -64,15 +64,15 @@ describe('Check all elements on landing page using locators you wish', function 
     });
 
     it('check that button "signUpFree" is appeared in slider', function () {
-        expect(mainPage.slider.callLink.isDisplayed()).toBeTruthy();
+        expect(mainPage.slider.actions.callLink.isDisplayed()).toBeTruthy();
     });
 
     it('check that call link is appeared in slider', function () {
-        expect(mainPage.slider.callLink.isDisplayed()).toBeTruthy();
+        expect(mainPage.slider.actions.callLink.isDisplayed()).toBeTruthy();
     });
 
     it('verify text of call link in slider is correct', function () {
-        expect(Helpers.getTextFromElement(mainPage.slider.callLink)).toBe("Or set up a call");
+        expect(Helpers.getTextFromElement(mainPage.slider.actions.callLink)).toBe("Or set up a call");
     });
 
     //about work
