@@ -87,7 +87,7 @@ describe('Login at https://brands-dev.klickly.com with shopify, using email / pa
     });
 
     // приветствие на странице пользователя
-    it('log in with correct email and password without shopify', function () {
+    it('log in with correct email and password, without shopify', function () {
         Helpers.logInOnlyWithEmailAndPassword("natalia.roshchyna@itrexgroup.com", "qwerty1234567");
         userPage.isAuthenticated = true;
         // Helpers.closePopUpInUserPage();
@@ -95,12 +95,21 @@ describe('Login at https://brands-dev.klickly.com with shopify, using email / pa
         expect(userPage.mainContent.title.getText()).toBe("Welcome, Nata!");
     });
 
-    // приветствие на странице пользователя
-    it('log in with incorrect email (incorrect mask) and password without shopify', function () {
+    // сообщение об ошибке
+    it('log in with incorrect email (incorrect mask) and password, without shopify', function () {
         Helpers.logInOnlyWithEmailAndPassword("fdgs", "gdhfir");
         // Helpers.closePopUpInUserPage();
-        browser.wait(() => mainPage.messageBox.isPresent(), 6000, 'MessageBox not found');
-        expect(mainPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
-            && expect(Helpers.getTextFromElement(mainPage.message)).toEqual("Email address must be in the format someone@example.com");
+        browser.wait(() => logInPage.messageBox.isPresent(), 6000, 'MessageBox not found');
+        expect(logInPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
+            && expect(Helpers.getTextFromElement(logInPage.messageItem)).toEqual("Email address must be in the format someone@example.com");
+    });
+
+    // сообщение об ошибке
+    it('log in with incorrect email (but correct mask) and incorrect password, without shopify', function () {
+        Helpers.logInOnlyWithEmailAndPassword("fdgs@gmail.com", "gdhfir");
+        // Helpers.closePopUpInUserPage();
+        browser.wait(() => logInPage.messageBox.isPresent(), 6000, 'MessageBox not found');
+        expect(logInPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
+            && expect(Helpers.getTextFromElement(logInPage.message)).toEqual("The email or password you entered is incorrect.");
     });
 });

@@ -9,8 +9,6 @@ class MainPage{
         this.slider = new Slider();
         this.containerAboutWork = new ContainerAboutHowWork();
         this.containerAboutActuallyWork = new ContainerAboutActuallyWork();
-        this.messageBox = element(by.xpath("//div[@class='block-errors']//div[@class='popup-block error']"));
-        this.message = element(by.xpath("//div[@class='block-errors']//div[@class='popup-block__info']//ul[@class='popup-block__list']//li"));
     }
 }
 
