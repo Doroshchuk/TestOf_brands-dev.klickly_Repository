@@ -6,7 +6,6 @@ class VerifyPage{
         this.linkToGenerateNewCode = element(by.xpath("//a[@href='javascript:void(0);']"));
         this.verifyBtn = element(by.xpath("//button[@type='button']"));
         this.goToMainPageBtn = element(by.xpath("//a[@class='filled  btn btn-big-form']"));
-        this.isVerified = false;
     }
 }
 

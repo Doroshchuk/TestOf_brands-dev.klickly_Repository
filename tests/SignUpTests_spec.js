@@ -6,6 +6,7 @@ const Helpers = require('../pages/Helpers.js');
 const ShopifyPage = require('../pages/ShopifyPage.js');
 const ErrorPage = require('../pages/ErrorPage.js');
 const ConnectingCartPage = require('../pages/ConnectingCartPage.js');
+const UserPage = require('../pages/UserPage.js');
 
 describe('Check Sign Up form validation', function () {
     const mainPage = new MainPage();
@@ -15,6 +16,7 @@ describe('Check Sign Up form validation', function () {
     const shopifyPage = new ShopifyPage();
     const errorPage = new ErrorPage();
     const connectingCartPage = new ConnectingCartPage();
+    const userPage = new UserPage();
 
     beforeAll(function () {
         browser.waitForAngularEnabled(false);
@@ -22,6 +24,11 @@ describe('Check Sign Up form validation', function () {
 
     beforeEach(function () {
         browser.get('https://brands-dev.klickly.com/');
+        if (userPage.isAuthenticated === true){
+            Helpers.chooseFunctionInAccountMenu("Log out");
+            userPage.isAuthenticated = false;
+            // browser.wait(() => mainPage.header.signUpBtn.isPresent(), 5000, 'SignUpBtn not found');
+        }
         mainPage.header.signUpBtn.click();
     });
 
@@ -72,10 +79,19 @@ describe('Check Sign Up form validation', function () {
         expect(Helpers.getTextFromElement(errorPage.errorMessage)).toBe("Sorry, this shop is currently unavailable.");
     });
 
-    // сообщение об ошибке
+    // успешный переход к шагу № 2
     it('sign up with correct information', function () {
         Helpers.signUp("Dasha", "Doroshchuk", "Klickly Brands", "fdgsgs@gmail.com", "dasha90697", "dasha90697", true);
         browser.wait(() => connectingCartPage.title.isPresent(), 6000, 'ConnectingCartPage not found');
+        userPage.isAuthenticated = true;
         expect(Helpers.getTextFromElement(connectingCartPage.title)).toBe("Connect cart");
+    });
+
+    // сообщение об ошибке
+    it('sign up with empty firstName and correct other information', function () {
+        Helpers.signUp("", "Doroshchuk", "Klickly Brands", "fdgsgs@gmail.com", "dasha90697", "dasha90697", true);
+        browser.wait(() => signUpPage.messageBox.isPresent(), 6000, 'MessageBox not found');
+        expect(signUpPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
+            && expect(Helpers.getTextFromElement(signUpPage.message.get(0))).toEqual("First name can't be blank");
     });
 });

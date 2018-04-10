@@ -67,9 +67,9 @@ class Helpers{
 
     static chooseFunctionInAccountMenu(functionName){
         userPage.header.nameOfUser.click();
-        // browser.wait(() => userPage.header.accountMenuFunctions.isPresent(), 10000, 'Menu not found');
-        userPage.header.accountMenuFunctions.filter(function (elem) {
-            return elem.getText() === functionName
+        userPage.header.accountMenuFunctions.filter(async function (elem) {
+            const text = await elem.getText();
+            return text === functionName
         }).click();
     }
 }
