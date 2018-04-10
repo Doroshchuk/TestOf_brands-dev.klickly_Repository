@@ -43,4 +43,12 @@ describe('Check Sign Up form validation', function () {
         expect(signUpPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
         && expect(Helpers.getTextFromElement(signUpPage.message.get(0))).toEqual("Store address can't be blank");
     });
+
+    // сообщение об ошибке
+    it('sign up with shopify and agreement but with empty companyName', function () {
+        Helpers.signUpWithShopify("natalia-payment-store", "", true);
+        browser.wait(() => signUpPage.messageBox.isPresent(), 6000, 'MessageBox not found');
+        expect(signUpPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
+        && expect(Helpers.getTextFromElement(signUpPage.message.get(0))).toEqual("Company name can't be blank");
+    });
 });
