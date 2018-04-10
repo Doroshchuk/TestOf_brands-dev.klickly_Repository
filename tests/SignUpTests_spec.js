@@ -27,4 +27,12 @@ describe('Check Sign Up form validation', function () {
         browser.wait(() => shopifyPage.mainText.isPresent(), 10000, 'MainContent not found');
         expect(shopifyPage.emailTF.getAttribute('id')).toEqual(browser.driver.switchTo().activeElement().getAttribute('id'));
     });
+
+    // сообщение об ошибке
+    it('sign up with shopify but without agreement', function () {
+        Helpers.signUpWithShopify("natalia-payment-store", "Klickly Brands", false);
+        browser.wait(() => signUpPage.messageBox.isPresent(), 6000, 'MessageBox not found');
+        expect(signUpPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
+        && expect(Helpers.getTextFromElement(signUpPage.message.get(0))).toEqual("You must indicate that you have read and agree to the Terms of Service and Privacy Policy");
+    });
 });

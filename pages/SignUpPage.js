@@ -14,6 +14,9 @@ class SignUpPage{
         this.confirmPasswordTF = element(by.xpath("//html//div[@class='popup__box']/div//label[@class='label-with-icon']/input[@name='confirmedPassword']"));
         this.agreementCheckbox = element(by.xpath("//div[@class='popup__box']//div//form//div[@class='popup__row popup__row__left']//label[@class='customLabel']"));
         this.createAccount = element(by.xpath("//button[@type='submit'][contains(text(),'Create Account')]"));
+
+        this.messageBox = element(by.xpath("//div[@class='block-errors']//div[@class='popup-block error']"));
+        this.message = element.all(by.xpath("//div[@class='block-errors']//div[@class='popup-block error']//ul[@class='popup-block__list']//li"));
     }
 }
 
