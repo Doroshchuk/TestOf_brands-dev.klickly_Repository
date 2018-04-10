@@ -42,6 +42,18 @@ class Helpers{
         signUpPage.signUpWithShopifyBtn.click();
     }
 
+    static signUp(firstName, lastName, companyName, email, password, confirmedPassword, agreement){
+        this.setValueIntoTextField(signUpPage.firstNameTF, firstName);
+        this.setValueIntoTextField(signUpPage.lastNameTF, lastName);
+        this.setValueIntoTextField(signUpPage.companyNameTF, companyName);
+        this.setValueIntoTextField(signUpPage.emailTF, email);
+        this.setValueIntoTextField(signUpPage.createPasswordTF, password);
+        this.setValueIntoTextField(signUpPage.confirmPasswordTF, confirmedPassword);
+        if (agreement)
+            signUpPage.agreementCheckbox.click();
+        signUpPage.createAccount.click();
+    }
+
     static closePopUpInUserPage(){
         userPage.popUp.doNotShowAgainCheckbox.click();
         userPage.popUp.exploreTheDashboardBtn.click();

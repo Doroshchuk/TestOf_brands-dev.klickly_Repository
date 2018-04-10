@@ -5,6 +5,7 @@ const LogInPage = require('../pages/LogInPage.js');
 const Helpers = require('../pages/Helpers.js');
 const ShopifyPage = require('../pages/ShopifyPage.js');
 const ErrorPage = require('../pages/ErrorPage.js');
+const ConnectingCartPage = require('../pages/ConnectingCartPage.js');
 
 describe('Check Sign Up form validation', function () {
     const mainPage = new MainPage();
@@ -13,6 +14,7 @@ describe('Check Sign Up form validation', function () {
     const verifyPage = new VerifyPage();
     const shopifyPage = new ShopifyPage();
     const errorPage = new ErrorPage();
+    const connectingCartPage = new ConnectingCartPage();
 
     beforeAll(function () {
         browser.waitForAngularEnabled(false);
@@ -68,5 +70,12 @@ describe('Check Sign Up form validation', function () {
         Helpers.signUpWithShopify("gfhdhd", "Klickly Brands", true);
         browser.wait(() => errorPage.errorMessage.isPresent(), 6000, 'ErrorPage not found');
         expect(Helpers.getTextFromElement(errorPage.errorMessage)).toBe("Sorry, this shop is currently unavailable.");
+    });
+
+    // сообщение об ошибке
+    it('sign up with correct information', function () {
+        Helpers.signUp("Dasha", "Doroshchuk", "Klickly Brands", "fdgsgs@gmail.com", "dasha90697", "dasha90697", true);
+        browser.wait(() => connectingCartPage.title.isPresent(), 6000, 'ConnectingCartPage not found');
+        expect(Helpers.getTextFromElement(connectingCartPage.title)).toBe("Connect cart");
     });
 });
