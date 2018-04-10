@@ -35,4 +35,12 @@ describe('Check Sign Up form validation', function () {
         expect(signUpPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
         && expect(Helpers.getTextFromElement(signUpPage.message.get(0))).toEqual("You must indicate that you have read and agree to the Terms of Service and Privacy Policy");
     });
+
+    // сообщение об ошибке
+    it('sign up with empty shopify but with agreement and companyName', function () {
+        Helpers.signUpWithShopify("", "Klickly Brands", true);
+        browser.wait(() => signUpPage.messageBox.isPresent(), 6000, 'MessageBox not found');
+        expect(signUpPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
+        && expect(Helpers.getTextFromElement(signUpPage.message.get(0))).toEqual("Store address can't be blank");
+    });
 });
