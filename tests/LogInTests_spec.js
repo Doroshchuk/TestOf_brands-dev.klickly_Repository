@@ -39,7 +39,7 @@ describe('Login at https://brands-dev.klickly.com with shopify, using email / pa
         Helpers.logInUsingEmailAndPassword("natalia.roshchyna@itrexgroup.com", "qwerty1234567");
         userPage.isAuthenticated = true;
         // Helpers.closePopUpInUserPage();
-        browser.wait(() => userPage.mainContent.title.isPresent(), 10000, 'Field not found');
+        browser.wait(() => userPage.mainContent.title.isPresent(), 10000, 'MainContent not found');
         expect(userPage.mainContent.title.getText()).toBe("Welcome, Nata!");
     });
 

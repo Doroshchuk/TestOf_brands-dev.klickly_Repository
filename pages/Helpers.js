@@ -1,9 +1,12 @@
 const LogInPage = require('./LogInPage.js');
 const ShopifyPage = require('./ShopifyPage.js');
 const UserPage = require('./UserPage.js');
+const SignUpPage = require('./SignUpPage.js');
+
 const shopifyPage = new ShopifyPage();
 const logInPage = new LogInPage();
 const userPage = new UserPage();
+const signUpPage = new SignUpPage();
 
 class Helpers{
     static getTextFromElement(element){
@@ -29,6 +32,14 @@ class Helpers{
         this.setValueIntoTextField(shopifyPage.emailTF, email);
         this.setValueIntoTextField(shopifyPage.password, password);
         shopifyPage.logInBtn.click();
+    }
+
+    static signUpWithShopify(shopifyValue, companyName, agreement){
+        this.setValueIntoTextField(signUpPage.shopifyTF, shopifyValue);
+        this.setValueIntoTextField(signUpPage.shopifyCompanyNameTF, companyName);
+        if (agreement)
+            signUpPage.shopifyAgreementCheckbox.click();
+        signUpPage.signUpWithShopifyBtn.click();
     }
 
     static closePopUpInUserPage(){
