@@ -10,9 +10,9 @@ exports.config = {
     // Spec patterns are relative to the configuration file location passed
     // to protractor (in this example conf.js).
     // They may include glob patterns.
-    // specs: ['tests/CheckingAllElements_spec.js'],
+    specs: ['tests/CheckingAllElements_spec.js', 'tests/LogInTests_spec.js', 'tests/SignUpTests_spec.js'],
     // specs: ['tests/LogInTests_spec.js'],
-    specs: ['tests/SignUpTests_spec.js'],
+    // specs: ['tests/SignUpTests_spec.js'],
 
     jasmineNodeOpts: {
         onComplete: null,

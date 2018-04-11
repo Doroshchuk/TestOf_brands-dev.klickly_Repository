@@ -182,4 +182,17 @@ describe('Check Sign Up form validation', function () {
         expect(signUpPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
         && expect(Helpers.getTextFromElement(signUpPage.errorItems.get(0))).toEqual("Email address must be in the format someone@example.com");
     });
+
+    // сообщение об ошибке
+    it('sign up with empty fields', function () {
+        Helpers.signUp("", "", "", "", "", "", false);
+        browser.wait(() => signUpPage.messageBox.isPresent(), 6000, 'MessageBox not found');
+        expect(signUpPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
+        && expect(Helpers.getTextFromElement(signUpPage.errorItems.get(0))).toEqual("First name can't be blank")
+        && expect(Helpers.getTextFromElement(signUpPage.errorItems.get(1))).toEqual("Last name can't be blank")
+        && expect(Helpers.getTextFromElement(signUpPage.errorItems.get(2))).toEqual("Company name can't be blank")
+        && expect(Helpers.getTextFromElement(signUpPage.errorItems.get(3))).toEqual("Email can't be blank")
+        && expect(Helpers.getTextFromElement(signUpPage.errorItems.get(4))).toEqual("Password can't be blank")
+        && expect(Helpers.getTextFromElement(signUpPage.errorItems.get(5))).toEqual("You must indicate that you have read and agree to the Terms of Service and Privacy Policy");
+    });
 });
