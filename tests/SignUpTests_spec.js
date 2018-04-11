@@ -92,6 +92,16 @@ describe('Check Sign Up form validation', function () {
         Helpers.signUp("", "Doroshchuk", "Klickly Brands", "fdgsgs@gmail.com", "dasha90697", "dasha90697", true);
         browser.wait(() => signUpPage.messageBox.isPresent(), 6000, 'MessageBox not found');
         expect(signUpPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
-            && expect(Helpers.getTextFromElement(signUpPage.message.get(0))).toEqual("First name can't be blank");
+        && expect(Helpers.getTextFromElement(signUpPage.message.get(0))).toEqual("First name can't be blank");
     });
+
+    // сообщение об ошибке
+    it('sign up with empty lastName and correct other information', function () {
+        Helpers.signUp("Dasha", "", "Klickly Brands", "fdgsgs@gmail.com", "dasha90697", "dasha90697", true);
+        browser.wait(() => signUpPage.messageBox.isPresent(), 6000, 'MessageBox not found');
+        expect(signUpPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
+        && expect(Helpers.getTextFromElement(signUpPage.message.get(0))).toEqual("Last name can't be blank");
+    });
+
+
 });
