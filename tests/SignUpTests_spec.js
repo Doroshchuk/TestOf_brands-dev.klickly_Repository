@@ -103,5 +103,43 @@ describe('Check Sign Up form validation', function () {
         && expect(Helpers.getTextFromElement(signUpPage.message.get(0))).toEqual("Last name can't be blank");
     });
 
+    // сообщение об ошибке
+    it('sign up with empty companyName and correct other information', function () {
+        Helpers.signUp("Dasha", "Doroshchuk", "", "fdgsgs@gmail.com", "dasha90697", "dasha90697", true);
+        browser.wait(() => signUpPage.messageBox.isPresent(), 6000, 'MessageBox not found');
+        expect(signUpPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
+        && expect(Helpers.getTextFromElement(signUpPage.message.get(0))).toEqual("Company name can't be blank");
+    });
 
+    // сообщение об ошибке
+    it('sign up with empty email and correct other information', function () {
+        Helpers.signUp("Dasha", "Doroshchuk", "Klickly Brands", "", "dasha90697", "dasha90697", true);
+        browser.wait(() => signUpPage.messageBox.isPresent(), 6000, 'MessageBox not found');
+        expect(signUpPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
+        && expect(Helpers.getTextFromElement(signUpPage.message.get(0))).toEqual("Email can't be blank");
+    });
+
+    // сообщение об ошибке
+    it('sign up with empty password and correct other information', function () {
+        Helpers.signUp("Dasha", "Doroshchuk", "Klickly Brands", "doro@gmail.com", "", "dasha90697", true);
+        browser.wait(() => signUpPage.messageBox.isPresent(), 6000, 'MessageBox not found');
+        expect(signUpPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
+        && expect(Helpers.getTextFromElement(signUpPage.message.get(0))).toEqual("Password can't be blank");
+    });
+
+    // сообщение об ошибке
+    it('sign up with empty confirmedPassword and correct other information', function () {
+        Helpers.signUp("Dasha", "Doroshchuk", "Klickly Brands", "doro@gmail.com", "dasha90697", "", true);
+        browser.wait(() => signUpPage.messageBox.isPresent(), 6000, 'MessageBox not found');
+        expect(signUpPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
+        && expect(Helpers.getTextFromElement(signUpPage.message.get(0))).toEqual("The confirmation password does not match");
+    });
+
+    // сообщение об ошибке
+    it('sign up without agreement and correct other information', function () {
+        Helpers.signUp("Dasha", "Doroshchuk", "Klickly Brands", "doro@gmail.com", "dasha90697", "dasha90697", false);
+        browser.wait(() => signUpPage.messageBox.isPresent(), 6000, 'MessageBox not found');
+        expect(signUpPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
+        && expect(Helpers.getTextFromElement(signUpPage.message.get(0))).toEqual("You must indicate that you have read and agree to the Terms of Service and Privacy Policy");
+    });
 });
