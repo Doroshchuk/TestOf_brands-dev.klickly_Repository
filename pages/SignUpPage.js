@@ -16,7 +16,8 @@ class SignUpPage{
         this.createAccount = element(by.xpath("//button[@type='submit'][contains(text(),'Create Account')]"));
 
         this.messageBox = element(by.xpath("//div[@class='block-errors']//div[@class='popup-block error']"));
-        this.message = element.all(by.xpath("//div[@class='block-errors']//div[@class='popup-block error']//ul[@class='popup-block__list']//li"));
+        this.errorItems = element.all(by.xpath("//div[@class='block-errors']//div[@class='popup-block error']//ul[@class='popup-block__list']//li"));
+        this.errorMessage = element(by.xpath("//div[@class='block-errors']//div[@class='popup-block error']//p[@class='popup-block__info']"));
     }
 }
 
