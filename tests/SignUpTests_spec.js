@@ -87,7 +87,15 @@ describe('Check Sign Up form validation', function () {
         expect(Helpers.getTextFromElement(connectingCartPage.title)).toBe("Connect cart");
     });
 
-    // сообщение об ошибке
+    // // сообщение об ошибке
+    // it('sign up with existing information and same password', function () {
+    //     Helpers.signUp("Dasha", "Doroshchuk", "Klickly Brands", "fdgsgs@gmail.com", "dasha90697", "dasha90697", true);
+    //     browser.wait(() => signUpPage.messageBox.isPresent(), 6000, 'MessageBox not found');
+    //     expect(signUpPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
+    //     && expect(Helpers.getTextFromElement(signUpPage.errorMessage)).toEqual("User exist and password not matched, please login instead");
+    // });
+
+    // сообщение об ошибке??
     it('sign up with existing information and other password that consists of 6 numbers', function () {
         Helpers.signUp("Dasha", "Doroshchuk", "Klickly Brands", "fdgsgs@gmail.com", "123456", "123456", true);
         browser.wait(() => signUpPage.messageBox.isPresent(), 6000, 'MessageBox not found');
@@ -165,5 +173,13 @@ describe('Check Sign Up form validation', function () {
         browser.wait(() => signUpPage.messageBox.isPresent(), 6000, 'MessageBox not found');
         expect(signUpPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
         && expect(Helpers.getTextFromElement(signUpPage.errorItems.get(0))).toEqual("Password must be at least 6 characters");
+    });
+
+    // сообщение об ошибке
+    it('sign up with incorrect email (mask) and correct other information', function () {
+        Helpers.signUp("Dasha", "Doroshchuk", "Klickly Brands", "fdgsgs", "dasha", "dasha", true);
+        browser.wait(() => signUpPage.messageBox.isPresent(), 6000, 'MessageBox not found');
+        expect(signUpPage.messageBox.getCssValue('background-color')).toEqual("rgba(246, 166, 35, 1)")
+        && expect(Helpers.getTextFromElement(signUpPage.errorItems.get(0))).toEqual("Email address must be in the format someone@example.com");
     });
 });
